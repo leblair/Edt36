@@ -16,13 +16,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner spinner;
-    private ArrayList<Country> countries;
+    private ArrayList<Country> countries = new ArrayList<>();
     private CountryAdapter countryAdapter;
 
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spinner = findViewById(R.id.spinner);
-
+        initList();
         countryAdapter = new CountryAdapter(this, countries);
         spinner.setAdapter(countryAdapter);
         spinner.setSelected(false);  // must
@@ -58,8 +60,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void initList() {/*
+    //@RequiresApi(api = Build.VERSION_CODES.O)
+    private void initList() {
+        countries.addAll(Arrays.asList(
+                new Country("argentina",R.drawable.argentina),
+                new Country("australia",R.drawable.australia),
+                new Country("canada",R.drawable.canada),
+                new Country("congo",R.drawable.congo),
+                new Country("egypt",R.drawable.egypt),
+                new Country("france",R.drawable.france),
+                new Country("germany",R.drawable.germany),
+                new Country("greece",R.drawable.greece),
+                new Country("india",R.drawable.india),
+                new Country("indonesia",R.drawable.indonesia),
+                new Country("ireland",R.drawable.ireland),
+                new Country("italy",R.drawable.italy),
+                new Country("kenya",R.drawable.kenya),
+                new Country("mexico",R.drawable.mexico),
+                new Country("newzeland",R.drawable.newzeland),
+                new Country("norway",R.drawable.norway),
+                new Country("poland",R.drawable.poland),
+                new Country("qatar",R.drawable.qatar),
+                new Country("southafrica",R.drawable.southafrica),
+                new Country("southkorea",R.drawable.southkorea),
+                new Country("spain",R.drawable.spain),
+                new Country("uk",R.drawable.uk),
+                new Country("usa",R.drawable.usa)
+        ));
+
+
+        /*
         String str = "/Descargas/Edt19/app/src/main/res/drawable";
         Path*//* path = Paths.get(str);
 
