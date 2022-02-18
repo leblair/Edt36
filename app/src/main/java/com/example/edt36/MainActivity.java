@@ -3,6 +3,7 @@ package com.example.edt36;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -46,8 +47,15 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 Country selectedItem = (Country) parent.getItemAtPosition(position);
-                String selectedDavidBowieName = selectedItem.getName();
-                Toast.makeText(MainActivity.this, selectedDavidBowieName, Toast.LENGTH_SHORT).show();
+                String selectedCountryName = selectedItem.getName();
+
+                if (!selectedCountryName.equals("Select a country")) {
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+
+                    intent.putExtra("pais", selectedCountryName);
+                    startActivity(intent);
+                }
+
             }
 
             @Override
